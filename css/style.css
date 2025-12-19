@@ -1,0 +1,28 @@
+body{
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+header{
+    align-self: center;
+}
+
+#buttons{
+    display: flex;
+    align-self:center;
+    gap: 200px
+}
+
+button{
+    font-weight: bold;
+    width: 100px;
+    height: 50px;
+}
+
+#result, #score{
+    font-size: large;
+    font-weight: bold;
+    align-self: center;
+}
+

@@ -1,5 +1,13 @@
 // Rock Paper Scissors Game
 
+//initialize buttons
+let scissors = document.getElementById('scissors');
+let rock = document.getElementById('rock');
+let paper = document.getElementById('paper');
+
+//initialize result
+let result = document.getElementById("result");
+
 //track computer score
 let compScore = 0;
 
@@ -39,63 +47,51 @@ function playRound(humanChoice, computerChoice) {
 
     //rock
     if(h === 'Rock' && c === 'Scissors'){
-        console.log('You won! Rock beats Scissors!')
+        result.textContent = 'You won! Rock beats Scissors!';
         playerScore++;
     }
     else if(h === 'Rock' && c === 'Paper'){
-        console.log('You lost! Rock beats Scissors!')
+        result.textContent = 'You lost! Rock beats Scissors!';
         compScore++;
     }
     //scissors
     else if(h === 'Scissors' && c === 'Rock'){
-        console.log('You lost! Rock beats Scissors!')
+        result.textContent = 'You lost! Rock beats Scissors!';
         compScore++;
     }
     else if(h === 'Scissors' && c === 'Paper'){
-        console.log('You won! Scissors beats Paper!')
+        result.textContent = 'You won! Scissors beats Paper!';
         playerScore++;
     }
     //paper
     else if(h === 'Paper' && c === 'Scissors'){
-        console.log('You lost! Scissors beats Paper!')
+        result.textContent = 'You lost! Scissors beats Paper!';
         compScore++;
     }
     else if(h == 'Paper' && c == 'Rock'){
-        console.log('You won! Paper beats Rock!')
+        result.textContent = 'You won! Paper beats Rock!';
         playerScore++;
     }
     else{
-        console.log('You tied!')
+        result.textContent = 'You tied!'
     }
-    
+    document.getElementById("player").textContent = "Player Score = " + playerScore;
+    document.getElementById("computer").textContent = "Computer Score = " + compScore;
+
+    if(playerScore >= 5 || compScore  >= 5){
+    document.getElementById("buttons").remove();
+    if(playerScore >= 5) result.textContent = 'You Win';
+    else if(compScore >= 5) result.textContent = 'You Lost';
+}
 }
 
 
-//call play round multiple times and identifies a winner
-function playGame(){
 
-    
-    //call playRound() 5 times
-    for(i = 0; i < 5; i++){
-        let humanSelection = getHumanChoice();
-        let computerSelection = getComputerChoice();
 
-        playRound(humanSelection, computerSelection);
-    }
 
-    //check for win or loss
-    if(playerScore > compScore){
-        console.log('You Win');
-    }
-    else if(playerScore < compScore){
-        console.log('You Lose');
-    }
-    else{
-        console.log('You Tied');
-    }
-}
-
-playGame();
+rock.addEventListener('click', () => playRound("Rock", getComputerChoice()));
+paper.addEventListener('click', () => playRound("Paper", getComputerChoice()));
+scissors.addEventListener('click', () => playRound("Scissors", getComputerChoice()));
 
 
 
